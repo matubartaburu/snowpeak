@@ -3,9 +3,18 @@ import { StarRating } from '../ui/StarRating.jsx'
 import { SnowQualityMeter } from '../ui/SnowQualityMeter.jsx'
 import { DifficultyBadge } from '../ui/DifficultyBadge.jsx'
 import { SnowForecast } from './SnowForecast.jsx'
+import { useWeather } from '../../hooks/useWeather.js'
+
+const WMO_ICONS = { 0:'☀️',1:'🌤️',2:'⛅',3:'☁️',45:'🌫️',48:'🌫️',51:'🌦️',61:'🌧️',71:'🌨️',73:'❄️',75:'❄️',80:'🌦️',85:'🌨️',86:'❄️',95:'⛈️' }
+function getWeatherIcon(code) {
+  const keys = Object.keys(WMO_ICONS).map(Number).sort((a,b)=>a-b)
+  const match = keys.slice().reverse().find(k => code >= k)
+  return WMO_ICONS[match] ?? '🌡️'
+}
 
 export function MountainCard({ mountain }) {
   const [hovered, setHovered] = useState(false)
+  const { data: weather } = useWeather(mountain.id)
 
   const navigate = () => {
     window.location.hash = `/mountain/${mountain.id}`
@@ -81,18 +90,34 @@ export function MountainCard({ mountain }) {
           }}>
             {mountain.country}
           </span>
-          <span style={{
-            background: 'rgba(74, 158, 255, 0.2)',
-            backdropFilter: 'blur(8px)',
-            border: '1px solid rgba(74, 158, 255, 0.3)',
-            borderRadius: 'var(--radius-full)',
-            padding: 'var(--space-1) var(--space-3)',
-            fontSize: 'var(--font-size-xs)',
-            color: 'var(--color-accent-primary)',
-            fontWeight: '600',
-          }}>
-            ▲ {mountain.elevationTopM.toLocaleString()}m
-          </span>
+          <div style={{ display: 'flex', gap: 'var(--space-2)', alignItems: 'center' }}>
+            {weather && weather.currentTemp !== null && (
+              <span style={{
+                background: 'rgba(0,0,0,0.4)',
+                backdropFilter: 'blur(8px)',
+                border: '1px solid rgba(255,255,255,0.15)',
+                borderRadius: 'var(--radius-full)',
+                padding: 'var(--space-1) var(--space-3)',
+                fontSize: 'var(--font-size-xs)',
+                color: 'var(--color-accent-snow)',
+                fontWeight: '600',
+              }}>
+                {getWeatherIcon(weather.weatherCode)} {Math.round(weather.currentTemp)}°C
+              </span>
+            )}
+            <span style={{
+              background: 'rgba(74, 158, 255, 0.2)',
+              backdropFilter: 'blur(8px)',
+              border: '1px solid rgba(74, 158, 255, 0.3)',
+              borderRadius: 'var(--radius-full)',
+              padding: 'var(--space-1) var(--space-3)',
+              fontSize: 'var(--font-size-xs)',
+              color: 'var(--color-accent-primary)',
+              fontWeight: '600',
+            }}>
+              ▲ {mountain.elevationTopM.toLocaleString()}m
+            </span>
+          </div>
         </div>
 
         {/* Mountain name */}

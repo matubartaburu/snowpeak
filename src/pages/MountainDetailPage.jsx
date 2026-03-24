@@ -2,7 +2,7 @@ import { useMountainContext } from '../context/MountainContext.jsx'
 import { useReviewContext } from '../context/ReviewContext.jsx'
 import { MountainHero } from '../components/mountain/MountainHero.jsx'
 import { MountainStats } from '../components/mountain/MountainStats.jsx'
-import { SnowForecast } from '../components/mountain/SnowForecast.jsx'
+import { WeatherPanel } from '../components/mountain/WeatherPanel.jsx'
 import { ReviewSummary } from '../components/review/ReviewSummary.jsx'
 import { ReviewForm } from '../components/review/ReviewForm.jsx'
 import { ReviewList } from '../components/review/ReviewList.jsx'
@@ -80,8 +80,8 @@ export function MountainDetailPage({ mountainId }) {
         }}>
           {/* Left column: stats + description + tags */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-8)' }}>
-            {/* Parte de nieve — API real */}
-            <SnowForecast mountainId={mountain.id} />
+            {/* Panel meteorológico completo — API real */}
+            <WeatherPanel mountain={mountain} />
 
             {/* Stats */}
             <MountainStats mountain={mountain} />
