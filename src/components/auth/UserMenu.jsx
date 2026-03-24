@@ -102,6 +102,25 @@ export function UserMenu() {
             <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-accent-snow-dim)' }}>{user.email}</div>
           </div>
           <button
+            onClick={() => { window.location.hash = '/perfil'; setOpen(false) }}
+            style={{
+              width: '100%',
+              textAlign: 'left',
+              background: 'none',
+              border: 'none',
+              padding: 'var(--space-3) var(--space-4)',
+              borderRadius: 'var(--radius-md)',
+              color: 'var(--color-accent-snow)',
+              fontSize: 'var(--font-size-sm)',
+              cursor: 'pointer',
+              fontWeight: '500',
+            }}
+            onMouseEnter={e => e.currentTarget.style.background = 'var(--color-surface)'}
+            onMouseLeave={e => e.currentTarget.style.background = 'none'}
+          >
+            👤 Mi perfil
+          </button>
+          <button
             onClick={() => { logout(); setOpen(false) }}
             style={{
               width: '100%',

@@ -8,6 +8,7 @@ import { AppShell } from './components/layout/AppShell.jsx'
 import { HomePage } from './pages/HomePage.jsx'
 import { MountainDetailPage } from './pages/MountainDetailPage.jsx'
 import { MapPage } from './pages/MapPage.jsx'
+import { ProfilePage } from './pages/ProfilePage.jsx'
 
 function AppContent() {
   const { route, params } = useHashRouter()
@@ -19,6 +20,7 @@ function AppContent() {
         {route === 'home' && <HomePage />}
         {route === 'mountain' && <MountainDetailPage mountainId={params.id} />}
         {route === 'mapa' && <MapPage />}
+        {route === 'perfil' && <ProfilePage />}
       </AppShell>
     </ReviewProvider>
   )

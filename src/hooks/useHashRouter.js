@@ -5,6 +5,7 @@ function parseHash(hash) {
   const parts = path.split('/').filter(Boolean)
   if (parts.length === 0) return { route: 'home', params: {} }
   if (parts[0] === 'mapa') return { route: 'mapa', params: {} }
+  if (parts[0] === 'perfil') return { route: 'perfil', params: {} }
   if (parts[0] === 'mountain' && parts[1]) return { route: 'mountain', params: { id: decodeURIComponent(parts[1]) } }
   return { route: 'home', params: {} }
 }
