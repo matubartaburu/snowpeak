@@ -7,6 +7,7 @@ import { WeatherPanel } from '../components/mountain/WeatherPanel.jsx'
 import { ReviewSummary } from '../components/review/ReviewSummary.jsx'
 import { ReviewForm } from '../components/review/ReviewForm.jsx'
 import { ReviewList } from '../components/review/ReviewList.jsx'
+import { MountainChat } from '../components/chat/MountainChat.jsx'
 
 export function MountainDetailPage({ mountainId }) {
   const { getMountainById } = useMountainContext()
@@ -164,6 +165,9 @@ export function MountainDetailPage({ mountainId }) {
 
             {/* Review list */}
             <ReviewList reviews={reviews} />
+
+            {/* Chat en tiempo real */}
+            <MountainChat mountainId={mountainId} mountainName={mountain.name} />
           </div>
         </div>
       </div>
