@@ -169,6 +169,23 @@ export const mountains = [
     gradient: 'linear-gradient(135deg, #1a2a3a 0%, #0a1a2a 40%, #2a1a2a 100%)',
     aggregateRating: { overall: 4.3, snowQuality: 4.2, reviewCount: 3 },
   },
+  {
+    id: 'vail',
+    name: 'Vail',
+    country: 'USA',
+    region: 'Colorado',
+    elevationTopM: 3527,
+    elevationBaseM: 2476,
+    totalRunsKm: 214,
+    lifts: 31,
+    difficulty: { beginner: 18, intermediate: 29, expert: 53 },
+    season: { openMonth: 11, closeMonth: 4 },
+    snowDepthCm: 155,
+    description: 'Vail es la estación de ski más famosa de Estados Unidos, icónica por su inmenso Back Bowls — siete cuencas de nieve virgen que suman más de 1.500 hectáreas de terreno abierto. Su pueblo alpino estilo europeo y su infraestructura de clase mundial la convierten en el referente del ski americano. La nieve seca de Colorado y la escala colosal del dominio garantizan una experiencia sin igual.',
+    tags: ['Back Bowls', 'Colorado', 'Freeride', 'Powder', 'Iconic', 'USA'],
+    gradient: 'linear-gradient(135deg, #1a0a2a 0%, #0d0520 40%, #1a2040 100%)',
+    aggregateRating: { overall: 4.7, snowQuality: 4.5, reviewCount: 3 },
+  },
 ]
 
 export const initialReviews = [
@@ -510,5 +527,37 @@ export const initialReviews = [
     ratings: { overall: 4, snowQuality: 4 },
     visitedMonth: 9,
     createdAt: '2025-09-05T11:00:00Z',
+  },
+
+  // Vail
+  {
+    id: 'r033',
+    mountainId: 'vail',
+    authorName: 'Jake Morrison',
+    title: 'Los Back Bowls son otro nivel',
+    body: 'Esquié en Vail tres temporadas seguidas y nunca me cansa. Los Back Bowls en día de polvo son una experiencia que no tiene comparación en Estados Unidos. El pueblo es caro pero la calidad de las instalaciones justifica todo. Nieve seca de Colorado en su máxima expresión.',
+    ratings: { overall: 5, snowQuality: 5 },
+    visitedMonth: 2,
+    createdAt: '2026-02-14T10:00:00Z',
+  },
+  {
+    id: 'r034',
+    mountainId: 'vail',
+    authorName: 'María Villanueva',
+    title: 'El referente del ski americano',
+    body: 'Vail es exactamente lo que uno espera: enorme, bien organizado y con nieve excelente. Los remontes son modernos y las filas cortas si vas entre semana. El ambiente del pueblo es muy europeo para ser Colorado. Lo único: los precios son altísimos en todo, desde el lift ticket hasta la comida.',
+    ratings: { overall: 4, snowQuality: 5 },
+    visitedMonth: 1,
+    createdAt: '2026-01-20T15:30:00Z',
+  },
+  {
+    id: 'r035',
+    mountainId: 'vail',
+    authorName: 'Tom Fischer',
+    title: 'Grandioso pero caro',
+    body: 'La escala de Vail es impresionante. El terreno para expertos en los Back Bowls y Blue Sky Basin es de otro planeta. Fui en temporada alta y las pistas principales estaban llenas, pero siempre encontrás donde escaparte. Si podés pagarlo, es obligatorio al menos una vez.',
+    ratings: { overall: 5, snowQuality: 4 },
+    visitedMonth: 3,
+    createdAt: '2026-03-01T09:00:00Z',
   },
 ]

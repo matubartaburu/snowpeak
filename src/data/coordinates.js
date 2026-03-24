@@ -10,4 +10,5 @@ export const mountainCoordinates = {
   'hakuba':      { lat: 36.6983,  lon: 137.8603  },
   'laslenas':    { lat: -35.1500, lon: -70.0667  },
   'vallenevado': { lat: -33.3572, lon: -70.2697  },
+  'vail':        { lat: 39.6403,  lon: -106.3742 },
 }
