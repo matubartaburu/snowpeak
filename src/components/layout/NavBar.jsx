@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { UserMenu } from '../auth/UserMenu.jsx'
 
 export function NavBar() {
   const [scrolled, setScrolled] = useState(false)
@@ -139,19 +140,7 @@ export function NavBar() {
             </a>
           </li>
           <li>
-            <div style={{
-              background: 'var(--color-accent-primary-muted)',
-              border: '1px solid var(--color-accent-primary)',
-              borderRadius: 'var(--radius-full)',
-              padding: 'var(--space-2) var(--space-4)',
-              color: 'var(--color-accent-primary)',
-              fontSize: 'var(--font-size-xs)',
-              fontWeight: '600',
-              letterSpacing: '0.05em',
-              textTransform: 'uppercase',
-            }}>
-              ❄ Temporada 2026
-            </div>
+            <UserMenu />
           </li>
         </ul>
       </div>

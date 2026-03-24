@@ -2,6 +2,7 @@ import './styles/variables.css'
 import './styles/global.css'
 import { MountainProvider, useMountainContext } from './context/MountainContext.jsx'
 import { ReviewProvider } from './context/ReviewContext.jsx'
+import { AuthProvider } from './context/AuthContext.jsx'
 import { useHashRouter } from './hooks/useHashRouter.js'
 import { AppShell } from './components/layout/AppShell.jsx'
 import { HomePage } from './pages/HomePage.jsx'
@@ -25,8 +26,10 @@ function AppContent() {
 
 export default function App() {
   return (
-    <MountainProvider>
-      <AppContent />
-    </MountainProvider>
+    <AuthProvider>
+      <MountainProvider>
+        <AppContent />
+      </MountainProvider>
+    </AuthProvider>
   )
 }
