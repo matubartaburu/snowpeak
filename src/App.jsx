@@ -6,6 +6,7 @@ import { useHashRouter } from './hooks/useHashRouter.js'
 import { AppShell } from './components/layout/AppShell.jsx'
 import { HomePage } from './pages/HomePage.jsx'
 import { MountainDetailPage } from './pages/MountainDetailPage.jsx'
+import { MapPage } from './pages/MapPage.jsx'
 
 function AppContent() {
   const { route, params } = useHashRouter()
@@ -16,6 +17,7 @@ function AppContent() {
       <AppShell>
         {route === 'home' && <HomePage />}
         {route === 'mountain' && <MountainDetailPage mountainId={params.id} />}
+        {route === 'mapa' && <MapPage />}
       </AppShell>
     </ReviewProvider>
   )

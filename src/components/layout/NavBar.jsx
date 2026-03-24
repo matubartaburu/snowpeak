@@ -125,7 +125,17 @@ export function NavBar() {
               onMouseEnter={e => e.target.style.color = 'var(--color-accent-snow)'}
               onMouseLeave={e => e.target.style.color = 'var(--color-accent-snow-dim)'}
             >
-              Mejores Montañas
+              Montañas
+            </a>
+          </li>
+          <li>
+            <a
+              href="#/mapa"
+              style={linkStyle}
+              onMouseEnter={e => e.target.style.color = 'var(--color-accent-snow)'}
+              onMouseLeave={e => e.target.style.color = 'var(--color-accent-snow-dim)'}
+            >
+              🗺️ Mapa
             </a>
           </li>
           <li>
