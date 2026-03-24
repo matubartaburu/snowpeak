@@ -47,7 +47,7 @@ export function MountainChat({ mountainId, mountainName }) {
     if (!text.trim() || sending) return
     setSending(true)
     try {
-      await sendMessage(text, user.id)
+      await sendMessage(text, user)
       setText('')
     } catch {
       // silenciar error
@@ -117,8 +117,8 @@ export function MountainChat({ mountainId, mountainName }) {
         ) : (
           messages.map((msg) => {
             const isMe = msg.user_id === user?.id
-            const profile = profiles[msg.user_id]
-            const displayName = profile?.username || 'Usuario'
+            const displayName = msg.user_name || 'Usuario'
+            const displayAvatar = msg.user_avatar
 
             return (
               <div
@@ -130,15 +130,27 @@ export function MountainChat({ mountainId, mountainName }) {
                   alignItems: 'flex-end',
                 }}
               >
-                {!isMe && (
-                  <Avatar user={null} profile={profile} size={28} />
-                )}
-                <div style={{ maxWidth: '75%', display: 'flex', flexDirection: 'column', gap: '4px', alignItems: isMe ? 'flex-end' : 'flex-start' }}>
-                  {!isMe && (
-                    <span style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-accent-snow-dim)', paddingLeft: 'var(--space-2)' }}>
-                      {displayName}
-                    </span>
+                {/* Avatar con nombre al hover */}
+                <div title={displayName} style={{ flexShrink: 0 }}>
+                  {displayAvatar ? (
+                    <img src={displayAvatar} alt={displayName} style={{ width: 28, height: 28, borderRadius: '50%', objectFit: 'cover' }} />
+                  ) : (
+                    <div style={{
+                      width: 28, height: 28, borderRadius: '50%',
+                      background: isMe ? 'var(--color-accent-primary)' : 'var(--color-surface)',
+                      border: '1px solid var(--color-border)',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      fontSize: '11px', fontWeight: '700',
+                      color: isMe ? '#fff' : 'var(--color-accent-snow)',
+                    }}>
+                      {displayName[0].toUpperCase()}
+                    </div>
                   )}
+                </div>
+                <div style={{ maxWidth: '75%', display: 'flex', flexDirection: 'column', gap: '4px', alignItems: isMe ? 'flex-end' : 'flex-start' }}>
+                  <span style={{ fontSize: 'var(--font-size-xs)', color: isMe ? 'var(--color-accent-primary)' : 'var(--color-accent-snow-dim)', paddingLeft: 'var(--space-2)', paddingRight: 'var(--space-2)', fontWeight: isMe ? '600' : '400' }}>
+                    {isMe ? 'Vos' : displayName}
+                  </span>
                   <div style={{
                     background: isMe ? 'var(--color-accent-primary)' : 'var(--color-surface)',
                     border: `1px solid ${isMe ? 'transparent' : 'var(--color-border)'}`,

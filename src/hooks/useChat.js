@@ -59,11 +59,17 @@ export function useChat(mountainId) {
     }
   }, [mountainId])
 
-  const sendMessage = useCallback(async (text, userId) => {
-    if (!text.trim() || !userId) return
+  const sendMessage = useCallback(async (text, user) => {
+    if (!text.trim() || !user) return
     const { error } = await supabase
       .from('messages')
-      .insert({ mountain_id: mountainId, user_id: userId, text: text.trim() })
+      .insert({
+        mountain_id: mountainId,
+        user_id: user.id,
+        text: text.trim(),
+        user_name: user.user_metadata?.full_name || user.email?.split('@')[0] || 'Usuario',
+        user_avatar: user.user_metadata?.avatar_url || null,
+      })
     if (error) throw new Error('No se pudo enviar el mensaje')
   }, [mountainId])
 
