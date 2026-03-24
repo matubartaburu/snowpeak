@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { StarRating } from '../ui/StarRating.jsx'
 import { SnowQualityMeter } from '../ui/SnowQualityMeter.jsx'
 import { DifficultyBadge } from '../ui/DifficultyBadge.jsx'
+import { SnowForecast } from './SnowForecast.jsx'
 
 export function MountainCard({ mountain }) {
   const [hovered, setHovered] = useState(false)
@@ -157,6 +158,9 @@ export function MountainCard({ mountain }) {
           </div>
           <SnowQualityMeter score={mountain.aggregateRating.snowQuality} showLabel />
         </div>
+
+        {/* Nieve últimos 7 días — API real */}
+        <SnowForecast mountainId={mountain.id} compact />
 
         {/* Snow depth & lifts */}
         <div style={{ display: 'flex', gap: 'var(--space-3)' }}>
