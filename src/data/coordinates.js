@@ -8,6 +8,6 @@ export const mountainCoordinates = {
   'aspen':       { lat: 39.1911,  lon: -106.8175 },
   'valdisere':   { lat: 45.4480,  lon: 6.9800   },
   'hakuba':      { lat: 36.6983,  lon: 137.8603  },
-  'lasleñas':    { lat: -35.1500, lon: -70.0667  },
+  'laslenas':    { lat: -35.1500, lon: -70.0667  },
   'vallenevado': { lat: -33.3572, lon: -70.2697  },
 }

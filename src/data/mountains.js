@@ -136,7 +136,7 @@ export const mountains = [
     aggregateRating: { overall: 4.5, snowQuality: 4.8, reviewCount: 3 },
   },
   {
-    id: 'lasleñas',
+    id: 'laslenas',
     name: 'Las Leñas',
     country: 'Argentina',
     region: 'Mendoza',
@@ -451,7 +451,7 @@ export const initialReviews = [
   // Las Leñas
   {
     id: 'r027',
-    mountainId: 'lasleñas',
+    mountainId: 'laslenas',
     authorName: 'Sebastián Cortés',
     title: 'El mejor secreto del ski sudamericano',
     body: 'Las Leñas es impresionante para los skiers que buscan nieve virgen y terreno extremo. El polvo andino es increíble cuando no ha nevado hace días. El remonte Marte accede al terreno más extremo que he esquiado en mi vida. Es una estación pequeña pero con una concentración brutal de terreno experto.',
@@ -461,7 +461,7 @@ export const initialReviews = [
   },
   {
     id: 'r028',
-    mountainId: 'lasleñas',
+    mountainId: 'laslenas',
     authorName: 'Valentina Cruz',
     title: 'Ski de invierno en julio, qué maravilla',
     body: 'Para los europeos es fascinante poder esquiar en julio. Las Leñas tiene una energía muy especial con su terreno volcánico y los Andes en el horizonte. La nieve fue excelente la primera semana pero luego se heló un poco. El ambiente après-ski es muy relajado y argentino.',
@@ -471,7 +471,7 @@ export const initialReviews = [
   },
   {
     id: 'r029',
-    mountainId: 'lasleñas',
+    mountainId: 'laslenas',
     authorName: 'Nicolás Ibáñez',
     title: 'Terrain que corta el aliento',
     body: 'Las Leñas tiene un porcentaje de terreno difícil impresionante. Si eres esquiador avanzado o experto, este es tu lugar en el hemisferio sur. Los couloirs y la nieve virgen son brutales. Las instalaciones son más antiguas que los resorts europeos pero el terreno lo compensa todo.',
