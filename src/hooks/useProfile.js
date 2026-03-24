@@ -13,8 +13,15 @@ export function useProfile(userId) {
       .select('*')
       .eq('id', userId)
       .single()
-      .then(({ data }) => {
-        setProfile(data)
+      .then(({ data, error }) => {
+        if (error && error.code !== 'PGRST116') {
+          console.error('Error fetching profile:', error)
+        }
+        setProfile(data ?? { id: userId })
+        setLoading(false)
+      })
+      .catch(() => {
+        setProfile({ id: userId })
         setLoading(false)
       })
   }, [userId])
@@ -22,8 +29,7 @@ export function useProfile(userId) {
   const updateProfile = useCallback(async (fields) => {
     const { data, error } = await supabase
       .from('profiles')
-      .update({ ...fields, updated_at: new Date().toISOString() })
-      .eq('id', userId)
+      .upsert({ id: userId, ...fields, updated_at: new Date().toISOString() })
       .select()
       .single()
 
