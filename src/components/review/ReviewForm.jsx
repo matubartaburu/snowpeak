@@ -37,27 +37,31 @@ export function ReviewForm({ mountainId }) {
     if (errors[key]) setErrors(prev => ({ ...prev, [key]: undefined }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const { valid, errors: validationErrors } = validateReview(form)
     if (!valid) {
       setErrors(validationErrors)
       return
     }
-    addReview(mountainId, {
-      authorName: form.authorName,
-      title: form.title,
-      body: form.body,
-      ratings: form.ratings,
-      visitedMonth: form.visitedMonth ? parseInt(form.visitedMonth) : null,
-    })
-    setSubmitted(true)
-    setForm(initialForm)
-    setErrors({})
-    setTimeout(() => {
-      setSubmitted(false)
-      setIsOpen(false)
-    }, 3000)
+    try {
+      await addReview(mountainId, {
+        authorName: form.authorName,
+        title: form.title,
+        body: form.body,
+        ratings: form.ratings,
+        visitedMonth: form.visitedMonth ? parseInt(form.visitedMonth) : null,
+      })
+      setSubmitted(true)
+      setForm(initialForm)
+      setErrors({})
+      setTimeout(() => {
+        setSubmitted(false)
+        setIsOpen(false)
+      }, 3000)
+    } catch {
+      setErrors({ submit: 'Error al guardar la reseña. Intentá de nuevo.' })
+    }
   }
 
   const inputStyle = (hasError) => ({

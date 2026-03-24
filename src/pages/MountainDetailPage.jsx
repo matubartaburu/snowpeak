@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useMountainContext } from '../context/MountainContext.jsx'
 import { useReviewContext } from '../context/ReviewContext.jsx'
 import { MountainHero } from '../components/mountain/MountainHero.jsx'
@@ -9,9 +10,13 @@ import { ReviewList } from '../components/review/ReviewList.jsx'
 
 export function MountainDetailPage({ mountainId }) {
   const { getMountainById } = useMountainContext()
-  const { getReviews } = useReviewContext()
+  const { getReviews, fetchReviews } = useReviewContext()
 
   const mountain = getMountainById(mountainId)
+
+  useEffect(() => {
+    if (mountainId) fetchReviews(mountainId)
+  }, [mountainId])
 
   if (!mountain) {
     return (
