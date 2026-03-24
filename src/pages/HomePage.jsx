@@ -1,6 +1,7 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useMountainContext } from '../context/MountainContext.jsx'
 import { MountainGrid } from '../components/mountain/MountainGrid.jsx'
+import { WeekendModal } from '../components/WeekendModal.jsx'
 
 function SnowParticles() {
   return (
@@ -285,6 +286,7 @@ function StatsBar({ mountains }) {
 
 export function HomePage() {
   const { mountains, filteredMountains } = useMountainContext()
+  const [showWeekend, setShowWeekend] = useState(false)
 
   return (
     <div>
@@ -397,6 +399,39 @@ export function HomePage() {
           </p>
 
           <div style={{ display: 'flex', gap: 'var(--space-4)', flexWrap: 'wrap', alignItems: 'center' }}>
+            {/* Botón estrella */}
+            <button
+              onClick={() => setShowWeekend(true)}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 'var(--space-3)',
+                background: 'linear-gradient(135deg, #4a9eff 0%, #2a7fd4 100%)',
+                border: 'none',
+                borderRadius: 'var(--radius-full)',
+                padding: 'var(--space-4) var(--space-6)',
+                color: '#fff',
+                fontSize: 'var(--font-size-md)',
+                fontWeight: '700',
+                cursor: 'pointer',
+                boxShadow: '0 4px 24px rgba(74,158,255,0.4)',
+                transition: 'all var(--transition-fast)',
+                letterSpacing: '-0.01em',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.transform = 'translateY(-2px)'
+                e.currentTarget.style.boxShadow = '0 8px 32px rgba(74,158,255,0.6)'
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.transform = 'translateY(0)'
+                e.currentTarget.style.boxShadow = '0 4px 24px rgba(74,158,255,0.4)'
+              }}
+            >
+              <span style={{ fontSize: '1.3rem' }}>🏔️</span>
+              ¿A dónde voy este finde?
+              <span style={{ fontSize: '1rem', opacity: 0.8 }}>❄️</span>
+            </button>
+
             <div style={{
               display: 'flex',
               alignItems: 'center',
@@ -415,10 +450,14 @@ export function HomePage() {
                 color: 'var(--color-accent-snow-dim)',
                 marginLeft: 'var(--space-2)',
               }}>
-                10 destinos
+                11 destinos
               </span>
             </div>
           </div>
+
+          {showWeekend && (
+            <WeekendModal mountains={mountains} onClose={() => setShowWeekend(false)} />
+          )}
         </div>
       </section>
 
